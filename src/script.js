@@ -2,7 +2,10 @@ $(document).ready(function () {
 
     let nbPlay = 0;
 
+    let points= [];
+
     $("button").click(function () {
+
 
         nbPlay++;
 
@@ -23,6 +26,13 @@ $(document).ready(function () {
 
                 createDe(nbSelected)
 
+                points=[]
+
+                checkNbPoint($("#imgDe"));
+                checkNbPoint($("#imgDe2"));
+
+                console.log(points)
+
 
             } else if($("#imgDe").children().length ===5){
                 $("#imgDe").children().remove();
@@ -32,7 +42,15 @@ $(document).ready(function () {
 
             else {
                 createDe()
+
+                points=[]
+
+                checkNbPoint($("#imgDe"));
+
+                console.log(points)
+
             }
+
         }
 
     });
@@ -59,6 +77,19 @@ $(document).ready(function () {
                 class: "rotate"
             }))
         }
+    }
+
+    const checkNbPoint = (diesContainerElements) => {
+
+        for(let dies of diesContainerElements.children()){
+
+            points.push(dies.src.split('/')[4].split('.')[0])
+
+
+        }
+
+
+
     }
 
 })
