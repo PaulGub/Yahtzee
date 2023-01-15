@@ -31,8 +31,6 @@ $(document).ready(function () {
                 checkNbPoint($("#imgDe"));
                 checkNbPoint($("#imgDe2"));
 
-                console.log(points)
-
 
             } else if($("#imgDe").children().length ===5){
                 $("#imgDe").children().remove();
@@ -47,7 +45,23 @@ $(document).ready(function () {
 
                 checkNbPoint($("#imgDe"));
 
-                console.log(points)
+                const celluleVide = (element) => {
+                    return !$.trim(element.html())
+                }
+
+                let total =0
+                points.forEach((point)=>{
+
+                    total += parseInt(point)
+
+                    if(!celluleVide($("#" + point))){
+                        $("#" + point).text(parseInt(point) + parseInt($("#" + point).text()))
+                    }else {
+                        $("#" + point).text(point)
+                    }
+                })
+
+                $("#total").text(total)
 
             }
 
